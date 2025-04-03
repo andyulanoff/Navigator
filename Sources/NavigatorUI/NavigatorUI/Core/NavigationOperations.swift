@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 extension Navigator {
 
@@ -69,7 +70,7 @@ extension Navigator {
     public func push<D: Hashable>(_ destination: D) {
         log(.navigation(.pushing(destination)))
         if let destination = destination as? any Hashable & Codable {
-            state.path.append(destination) // ensures NavigationPath knows type is Codable
+            state.path.append(destination) // ensures NBNavigationPath knows type is Codable
         } else {
             state.path.append(destination)
         }
@@ -184,7 +185,7 @@ extension NavigationState {
 
     internal func popAll() -> Bool {
         let result = !path.isEmpty
-        path = NavigationPath()
+        path = NBNavigationPath()
         return result
     }
 

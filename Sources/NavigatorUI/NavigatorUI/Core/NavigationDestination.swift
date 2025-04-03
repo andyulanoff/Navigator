@@ -13,7 +13,7 @@ import SwiftUI
 ///
 /// This can happen using...
 ///
-/// * Standard SwiftUI modifiers like `NavigationLink(value:label:)`.
+/// * Standard SwiftUI modifiers like `NBNavigationLink(value:label:)`.
 /// * Imperatively by asking a ``Navigator`` to perform the desired action.
 /// * Or via a deep link action enabled by a ``NavigationURLHandler``.
 ///
@@ -48,9 +48,9 @@ import SwiftUI
 /// Note how associated values can be used to pass parameters to views as needed.
 ///
 /// ### Using Navigation Destinations
-/// This can be done via using a standard SwiftUI `NavigationLink(value:label:)` view.
+/// This can be done via using a standard SwiftUI `NBNavigationLink(value:label:)` view.
 /// ```swift
-/// NavigationLink(value: HomeDestinations.page3) {
+/// NBNavigationLink(value: HomeDestinations.page3) {
 ///     Text("Link to Home Page 3!")
 /// }
 /// ```
@@ -63,14 +63,14 @@ import SwiftUI
 ///
 /// ### Registering Navigation Destinations
 /// Like traditional `NavigationStack` destination types, `NavigationDestination` types need to be registered with the enclosing
-/// navigation stack in order for standard `NavigationLink(value:label:)` transitions to work correctly.
+/// navigation stack in order for standard `NBNavigationLink(value:label:)` transitions to work correctly.
 ///
 /// But since each `NavigationDestination` already defines the view to be provided, registering destination types can be done
 /// using a simple one-line view modifier.
 /// ```swift
 /// ManagedNavigationStack {
 ///     HomeView()
-///         .navigationDestination(HomeDestinations.self)
+///         .nbNavigationDestination(HomeDestinations.self)
 /// }
 /// ```
 /// This also makes using the same destination type with more than one navigation stack a lot easier.
@@ -92,7 +92,7 @@ import SwiftUI
 /// In this case, should `navigator.navigate(to: HomeDestinations.page3)` be called, Navigator will automatically present that view in a
 /// sheet. All other views will be pushed onto the navigation stack.
 ///
-/// > Important: When using `NavigationLink(value:label:)` the method will be ignored and SwiftUI will push
+/// > Important: When using `NBNavigationLink(value:label:)` the method will be ignored and SwiftUI will push
 /// the value onto the navigation stack as it would normally.
 public protocol NavigationDestination: Hashable, Equatable, Identifiable, View {
 
@@ -153,17 +153,17 @@ extension NavigationDestination {
 }
 
 extension View {
-    /// Registers ``NavigationDestination`` types in order to enable `navigate(to:)` and `NavigationLink(value:label)` behaviors.
+    /// Registers ``NavigationDestination`` types in order to enable `navigate(to:)` and `NBNavigationLink(value:label)` behaviors.
     /// ```swift
     /// ManagedNavigationStack {
     ///     HomeView()
-    ///         .navigationDestination(HomeDestinations.self)
+    ///         .nbNavigationDestination(HomeDestinations.self)
     /// }
     /// ```
     /// This also makes using the same destination type with more than one navigation stack a lot easier.
     ///
     /// Important: NavigationDestination must be registered using this function!
-    public func navigationDestination<D: NavigationDestination>(_ destination: D.Type) -> some View {
+    public func nbNavigationDestination<D: NavigationDestination>(_ destination: D.Type) -> some View {
         self.modifier(NavigationDestinationModifier(destination: destination))
     }
 
@@ -180,7 +180,7 @@ private struct NavigationDestinationModifier<D: NavigationDestination>: ViewModi
     @Environment(\.navigator) var navigator
     func body(content: Content) -> some View {
         content
-            .navigationDestination(for: D.self) { destination in
+            .nbNavigationDestination(for: D.self) { destination in
                 destination
                     // propagates environment so destination continues to use the same navigator
                     // this is primarily needed when using NavigationSplitView

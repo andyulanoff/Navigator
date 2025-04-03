@@ -92,7 +92,7 @@ struct RootHomeView: View {
     var body: some View {
         ManagedNavigationStack {
             HomeDestinations.home
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
         }
     }
 }

@@ -67,7 +67,7 @@ Note how associated values can be used to pass parameters to views as needed.
 
 ### Registering Navigation Destinations
 Like traditional `NavigationStack` destination types, `NavigationDestination` types need to be registered with the enclosing
-navigation stack in order for `navigate(to:)` presentations and standard `NavigationLink(value:label:)` transitions 
+navigation stack in order for `navigate(to:)` presentations and standard `NBNavigationLink(value:label:)` transitions 
 to work correctly.
 
 But since each `NavigationDestination` already defines the views to be provided, registering destination types can be done
@@ -75,15 +75,15 @@ using a simple one-line view modifier.
 ```swift
 ManagedNavigationStack {
     HomeView()
-        .navigationDestination(HomeDestinations.self)
+        .nbNavigationDestination(HomeDestinations.self)
 }
 ```
 This can also make using the same destination type with more than one navigation stack a lot easier.
 
 ### Using Navigation Destinations
-With that out of the way, Navigation Destinations can be dispatched using a standard SwiftUI `NavigationLink(value:label:)` view.
+With that out of the way, Navigation Destinations can be dispatched using a standard SwiftUI `NBNavigationLink(value:label:)` view.
 ```swift
-NavigationLink(value: HomeDestinations.page3) {
+NBNavigationLink(value: HomeDestinations.page3) {
     Text("Link to Home Page 3!")
 }
 ```
@@ -146,7 +146,7 @@ Button("Present Home Page 55 Via Sheet") {
     navigator.navigate(to: HomeDestinations.pageN(55), method: .sheet)
 }
 ```
-*Note that destinations dispatched via NavigationLink will always push onto the NavigationStack. That's just how SwiftUI works.*
+*Note that destinations dispatched via NBNavigationLink will always push onto the NavigationStack. That's just how SwiftUI works.*
 
 ### Checkpoints
 
@@ -174,7 +174,7 @@ struct RootHomeView: View {
         ManagedNavigationStack(scene: "home") {
             HomeContentView(title: "Home Navigation")
                 .navigationCheckpoint(KnownCheckpoints.home)
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
         }
     }
 }
@@ -236,7 +236,7 @@ struct RootTabView : View {
     }
 }
 ```
-Sharp eyes may have spotted the `onNavigationReceive` modifier, which--much like `navigationDestination(MyType.self)`--is listening for Navigator to broadcast a value of type RootTabs.
+Sharp eyes may have spotted the `onNavigationReceive` modifier, which--much like `nbNavigationDestination(MyType.self)`--is listening for Navigator to broadcast a value of type RootTabs.
 
 When received, Navigator will dismiss any presented screens, set the selected tab, and then return normally.
 
@@ -311,7 +311,7 @@ struct RootHomeView: View {
     var body: some View {
         ManagedNavigationStack(scene: "home") {
             HomeDestinations.home()
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
         }
     }
 }

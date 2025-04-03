@@ -79,7 +79,7 @@ struct ContentView: View {
                 }
                 SomeView()
             }
-            .navigationDestination(Destinations.self)
+            .nbNavigationDestination(Destinations.self)
         }
     }
 }
@@ -88,7 +88,7 @@ Using an environment variable gets the current "parent" Navigator in the tree. (
 
 But `ManagedNavigationStack` creates and installs a *new* Navigator into the environment, one that knows how to talk to it. 
 
-Which means that the code in the first button fails because it's talking to the wrong Navigator. If you want to manipulate the *current* NavigationStack and the designations that *it* knows about, you need to be talking to *its* Navigator. 
+Which means that the code in the first button fails because it's talking to the wrong Navigator. If you want to manipulate the *current* NBNavigationStackand the designations that *it* knows about, you need to be talking to *its* Navigator. 
 
 One way to do that is to use the Navigator passed to the ManagedNavigationStack's closure. That's shown in the second example.
 ```swift

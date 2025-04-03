@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49C5A1372D9E6C6300D17CBA /* NavigatorUI in Frameworks */ = {isa = PBXBuildFile; productRef = 49C5A1362D9E6C6300D17CBA /* NavigatorUI */; };
 		4C776F2B2D8B9CD600DC5FB0 /* NavigatorUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C776F2A2D8B9CD600DC5FB0 /* NavigatorUI */; };
 		4C91A6192D8B9A26002C3DBB /* NavigatorUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C91A6182D8B9A26002C3DBB /* NavigatorUI */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C5A1372D9E6C6300D17CBA /* NavigatorUI in Frameworks */,
 				4C776F2B2D8B9CD600DC5FB0 /* NavigatorUI in Frameworks */,
 				4C91A6192D8B9A26002C3DBB /* NavigatorUI in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				4C91A6182D8B9A26002C3DBB /* NavigatorUI */,
 				4C776F2A2D8B9CD600DC5FB0 /* NavigatorUI */,
+				49C5A1362D9E6C6300D17CBA /* NavigatorUI */,
 			);
 			productName = NavigatorDemo;
 			productReference = 4C93ABDD2CED04340037903D /* NavigatorDemo.app */;
@@ -117,7 +120,6 @@
 			mainGroup = 4C93ABD42CED04340037903D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				4C776F292D8B9CD600DC5FB0 /* XCLocalSwiftPackageReference "../../Navigator" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4C93ABDE2CED04340037903D /* Products */;
@@ -288,7 +290,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,7 +323,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,14 +360,11 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		4C776F292D8B9CD600DC5FB0 /* XCLocalSwiftPackageReference "../../Navigator" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../Navigator;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
+		49C5A1362D9E6C6300D17CBA /* NavigatorUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NavigatorUI;
+		};
 		4C776F2A2D8B9CD600DC5FB0 /* NavigatorUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NavigatorUI;

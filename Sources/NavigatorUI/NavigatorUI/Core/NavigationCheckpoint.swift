@@ -17,7 +17,7 @@ import SwiftUI
 ///     var body: some View {
 ///         ManagedNavigationStack {
 ///             HomeContentView(title: "Home Navigation")
-///                 .navigationDestination(HomeDestinations.self)
+///                 .nbNavigationDestination(HomeDestinations.self)
 ///                 .navigationCheckpoint(KnowCheckpoints.home)
 ///         }
 ///     }
@@ -203,7 +203,7 @@ extension View {
     ///     var body: some View {
     ///         ManagedNavigationStack {
     ///             HomeContentView(title: "Home Navigation")
-    ///                 .navigationDestination(HomeDestinations.self)
+    ///                 .nbNavigationDestination(HomeDestinations.self)
     ///                 .navigationCheckpoint(.home)
     ///         }
     ///     }

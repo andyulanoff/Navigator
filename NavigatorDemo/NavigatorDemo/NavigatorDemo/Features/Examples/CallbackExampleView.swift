@@ -58,7 +58,7 @@ struct CallbackExampleView: View {
                     }
                 }
             }
-            .navigationDestination(CallbackDestinations.self)
+            .nbNavigationDestination(CallbackDestinations.self)
             // illustrates returning to named checkpoint instead of trying to pop or dismiss
             .navigationCheckpoint(KnownCheckpoints.home)
             // illustrates returning to named checkpoint with value instead of using callback handler

@@ -28,7 +28,7 @@ struct HomeRootView: View {
         ManagedNavigationStack(scene: RootTabs.home.id) {
             HomeContentView(viewModel: HomeContentViewModel(resolver: viewModel.resolver, title: "Home Navigation"))
                 .navigationCheckpoint(KnownCheckpoints.home)
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
                 .onNavigationReceive { (destination: HomeDestinations, navigator) in
                     navigator.navigate(to: destination)
                     return .auto
@@ -50,13 +50,13 @@ struct HomeContentView: View {
     var body: some View {
         List {
             Section("Navigation Actions") {
-                NavigationLink(value: HomeDestinations.page2) {
+                NBNavigationLink(value: HomeDestinations.page2) {
                     Text("Link to Home Page 2!")
                 }
-                NavigationLink(value: HomeDestinations.pageN(44)) {
+                NBNavigationLink(value: HomeDestinations.pageN(44)) {
                     Text("Link to Home Page 44!")
                 }
-                NavigationLink(value: HomeDestinations.external) {
+                NBNavigationLink(value: HomeDestinations.external) {
                     Text("Link to External View!")
                 }
                 Button("Button Navigate to Home Page 55") {
@@ -111,10 +111,10 @@ struct HomePage2View: View {
     var body: some View {
         List {
             Section("Navigation Actions") {
-                NavigationLink(value: HomeDestinations.page3) {
+                NBNavigationLink(value: HomeDestinations.page3) {
                     Text("Link to Home Page 3!")
                 }
-                NavigationLink(value: HomeDestinations.pageN(55)) {
+                NBNavigationLink(value: HomeDestinations.pageN(55)) {
                     Text("Link to Home Page 55!")
                 }
             }
@@ -148,7 +148,7 @@ struct HomePage3View: View {
     var body: some View {
         List {
             Section("Navigation Actions") {
-                NavigationLink(value: HomeDestinations.pageN(initialValue)) {
+                NBNavigationLink(value: HomeDestinations.pageN(initialValue)) {
                     Text("Link to Home Page 66!")
                 }
                 Button("Button Push to Home Page 77") {
@@ -207,7 +207,7 @@ struct NestedHomeContentView: View {
         ManagedNavigationStack {
             // Demonstrates using destinations to build root views that may have dependencies.
             HomeDestinations.home(title)
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
         }
     }
 }

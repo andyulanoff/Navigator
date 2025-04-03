@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
-/// Creates a NavigationStack and its associated Navigator that "manages" the stack.
+/// Creates a NBNavigationStackand its associated Navigator that "manages" the stack.
 ///
 /// Using ManagedNavigationStack is easy. Just use it where you'd normally used a `NavigationStack`.
 /// ```swift
@@ -15,7 +16,7 @@ import SwiftUI
 ///     var body: some View {
 ///         ManagedNavigationStack {
 ///             HomeView()
-///                 .navigationDestination(HomeDestinations.self)
+///                 .nbNavigationDestination(HomeDestinations.self)
 ///         }
 ///     }
 /// }
@@ -48,7 +49,7 @@ public struct ManagedNavigationStack<Content: View>: View {
         self.isScene = false
     }
 
-    /// Initializes NavigationStack passing Navigator into closure.
+    /// Initializes NBNavigationStackpassing Navigator into closure.
     public init(@ViewBuilder content: @escaping (Navigator) -> Content) {
         self.name = nil
         self.content = { navigator in content(navigator) }
@@ -62,21 +63,21 @@ public struct ManagedNavigationStack<Content: View>: View {
         self.isScene = false
     }
 
-    /// Initializes named NavigationStack passing Navigator into closure.
+    /// Initializes named NBNavigationStackpassing Navigator into closure.
     public init(name: String, @ViewBuilder content: @escaping (Navigator) -> Content) {
         self.name = name
         self.content = { navigator in content(navigator) }
         self.isScene = false
     }
 
-    /// Initializes NavigationStack with name needed to enable scene storage.
+    /// Initializes NBNavigationStackwith name needed to enable scene storage.
     public init(scene name: String, @ViewBuilder content: @escaping () -> Content) {
         self.name = name
         self.content = { _ in content() }
         self.isScene = true
     }
 
-    /// Initializes NavigationStack with name needed to enable scene storage passing Navigator into closure.
+    /// Initializes NBNavigationStackwith name needed to enable scene storage passing Navigator into closure.
     public init(scene name: String, @ViewBuilder content: @escaping (Navigator) -> Content) {
         self.name = name
         self.content = { navigator in content(navigator) }
@@ -99,7 +100,7 @@ public struct ManagedNavigationStack<Content: View>: View {
         isScene ? name : nil
     }
 
-    // Allows NavigationStack to use Navigator and NavigationState provided by ManagedPresentationView
+    // Allows NBNavigationStackto use Navigator and NavigationState provided by ManagedPresentationView
     internal struct WrappedNavigationStack: View {
 
         @ObservedObject internal var state: NavigationState
@@ -112,7 +113,7 @@ public struct ManagedNavigationStack<Content: View>: View {
             self.content = content
         }
         var body: some View {
-            NavigationStack(path: $state.path) {
+            NBNavigationStack(path: $state.path) {
                 content
             }
             .modifier(NavigationSceneStorageModifier(state: state, name: name))
@@ -120,7 +121,7 @@ public struct ManagedNavigationStack<Content: View>: View {
 
     }
 
-    // Allow NavigationStack to create and manage its own Navigator and NavigationState
+    // Allow NBNavigationStackto create and manage its own Navigator and NavigationState
     internal struct CreateNavigationStack: View {
 
         @State internal var state: NavigationState
@@ -142,7 +143,7 @@ public struct ManagedNavigationStack<Content: View>: View {
             @StateObject internal var state: NavigationState
             internal let content: Content
             var body: some View {
-                NavigationStack(path: $state.path) {
+                NBNavigationStack(path: $state.path) {
                     content
                 }
             }

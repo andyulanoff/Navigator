@@ -40,7 +40,7 @@ struct RootHomeView: View {
         ManagedNavigationStack(scene: "home") {
             HomeContentView(title: "Home Navigation")
                 .navigationCheckpoint(KnownCheckpoints.home)
-                .navigationDestination(HomeDestinations.self)
+                .nbNavigationDestination(HomeDestinations.self)
         }
     }
 }

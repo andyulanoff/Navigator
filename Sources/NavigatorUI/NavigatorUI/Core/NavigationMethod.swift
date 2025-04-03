@@ -30,7 +30,7 @@
 /// In this case, should `navigator.navigate(to: HomeDestinations.page3)` be called, Navigator will automatically present that view in a
 /// sheet. All other views will be pushed onto the navigation stack.
 ///
-/// > Important: When using `NavigationLink(value:label:)` the method will be ignored and SwiftUI will push
+/// > Important: When using `NBNavigationLink(value:label:)` the method will be ignored and SwiftUI will push
 /// the value onto the navigation stack as it would normally.
 public enum NavigationMethod: Int, Codable {
     /// Pushes the destination onto the navigation stack path.

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 /// Provides state restoration storage for named ManagedNavigationControllers.
 internal struct NavigationSceneStorage: Codable {
@@ -68,8 +69,8 @@ extension NavigationState {
             return
         }
         self.name = storage.name
-        if let data = storage.path, let representation = try? NavigationState.decoder.decode(NavigationPath.CodableRepresentation.self, from: data) {
-            path = NavigationPath(representation)
+        if let data = storage.path, let representation = try? NavigationState.decoder.decode(NBNavigationPath.CodableRepresentation.self, from: data) {
+            path = NBNavigationPath(representation)
         } else {
             path = .init()
         }

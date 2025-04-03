@@ -34,7 +34,7 @@ struct TransitionListView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink(value: TransitionDestinations.destination1) {
+                NBNavigationLink(value: TransitionDestinations.destination1) {
                     Text("Trigger Transition")
                 }
                 // 3. define source
@@ -44,8 +44,8 @@ struct TransitionListView: View {
                 navigator.dismiss()
             }
         }
-        // 4. use a standard navigationDestination modifier to wrap our destination
-        .navigationDestination(for: TransitionDestinations.self) { destination in
+        // 4. use a standard nbNavigationDestination modifier to wrap our destination
+        .nbNavigationDestination(for: TransitionDestinations.self) { destination in
             switch destination {
             case .destination1:
                 // 5. expand destination to provide the needed destination view

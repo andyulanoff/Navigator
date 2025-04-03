@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import NavigationBackport
 
 /// Persistent storage for Navigators.
 public class NavigationState: ObservableObject, @unchecked Sendable {
@@ -19,7 +20,7 @@ public class NavigationState: ObservableObject, @unchecked Sendable {
     }
 
     /// Navigation path for the current ManagedNavigationStack
-    @Published internal var path: NavigationPath = .init() {
+    @Published internal var path: NBNavigationPath = .init() {
         didSet {
             cleanCheckpoints()
             pathChangedCounter += 1

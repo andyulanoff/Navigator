@@ -47,11 +47,11 @@ struct AccountsView: View {
     var body: some View {
         List {
             Section("Account Actions") {
-                NavigationLink("Details", value: AccountDestinations.disclaimers(account))
-                NavigationLink("Disclaimers", value: AccountDestinations.disclaimers(account))
+                NBNavigationLink("Details", value: AccountDestinations.disclaimers(account))
+                NBNavigationLink("Disclaimers", value: AccountDestinations.disclaimers(account))
             }
         }
-        .navigationDestination(AccountDestinations.self)
+        .nbNavigationDestination(AccountDestinations.self)
     }
 }
 

@@ -42,7 +42,7 @@ struct SettingsView: View {
             }
 
             Section("Navigation Actions") {
-                NavigationLink(value: SettingsDestinations.page2) {
+                NBNavigationLink(value: SettingsDestinations.page2) {
                     Text("Link to Settings Page 2!")
                 }
                 Button("Navigator Push to Settings Page 3!") {
@@ -112,7 +112,7 @@ struct Page2SettingsView: View {
                     .foregroundStyle(.secondary)
             }
             Section("Navigation Actions") {
-                NavigationLink(value: SettingsDestinations.page3) {
+                NBNavigationLink(value: SettingsDestinations.page3) {
                     Text("Link to Test Page 3!")
                 }
             }
